@@ -34,9 +34,12 @@ public class Sample1 {
 	  File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	  FileUtils.copyFile(screenshot, new File("c:\\dev\\screenshot.png"));
 	  
-	  driver.get("http://www.accorhotels.com");
+	  driver.get("https://secure.accorhotels.com/authentication/login.jsp?appContext=&lang=fr&forceLogin=true&gotoUrl=http%3A%2F%2Fwww.accorhotels.com%2Ffr%2Ffrance%2Findex.shtml");	  
+	  
 	  Login login = new Login(driver);
 	  login.typeUsername("jlechardeur@gmail.com");
+	  login.typePassword("nellysimon1");
+	  login.submitLogin();
 	  
 	  //driver.quit();
 	}
