@@ -1,6 +1,9 @@
 package com.selenium.test;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -39,8 +42,21 @@ public class Sample1 {
 		tools.takeScreenShot("C:\\dev\\screenshot_liste_hotel.png", driver);
 
 		//on prend le premier element
-		//driver.findElement(By.xpath("//*[@id=\"0902\"]/div/div/div[2]/div[3]/a[2]/span")).click();
 		driver.findElements(By.xpath("//*[@class=\"blocHotelWrapper\"]/div/div[2]/div[3]/a[2]/span")).get(0).click();
+		Thread.sleep(5000);
+		//renseigne date
+		SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		Date dt = new Date();
+		c.setTime(dt); 
+		c.add(Calendar.DATE, 3);
+		dt = c.getTime();
+		simpleDate.format(dt);
+		driver.findElement(By.id("search-dateIn")).sendKeys(simpleDate.toString());
+		c.add(Calendar.DATE, 3);
+		dt = c.getTime();
+		simpleDate.format(dt);
+		driver.findElement(By.id("search-dateOut")).sendKeys(simpleDate.toString());
 		
 
 		// driver.quit();
