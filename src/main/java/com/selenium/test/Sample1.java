@@ -32,7 +32,7 @@ public class Sample1 {
 		tools.takeScreenShot("C:\\dev\\screenshot_login.png", driver);
 
 		HomepageSearch homepageSearch = new HomepageSearch(driver);
-		homepageSearch.typeDestination("tours");
+		homepageSearch.typeDestination("chilly mazarin");
 		homepageSearch.submitSearch();
 		// temporisation
 		Thread.sleep(5000);
