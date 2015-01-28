@@ -32,14 +32,16 @@ public class Sample1 {
 		tools.takeScreenShot("C:\\dev\\screenshot_login.png", driver);
 
 		HomepageSearch homepageSearch = new HomepageSearch(driver);
-		homepageSearch.typeDestination("lille");
+		homepageSearch.typeDestination("tours");
 		homepageSearch.submitSearch();
 		// temporisation
 		Thread.sleep(5000);
 		tools.takeScreenShot("C:\\dev\\screenshot_liste_hotel.png", driver);
 
-		//on prend le premier elemnt
-		driver.findElement(By.xpath("//*[@id=\"0902\"]/div/div/div[2]/div[3]/a[2]/span")).submit();
+		//on prend le premier element
+		//driver.findElement(By.xpath("//*[@id=\"0902\"]/div/div/div[2]/div[3]/a[2]/span")).click();
+		driver.findElements(By.xpath("//*[@class=\"blocHotelWrapper\"]/div/div[2]/div[3]/a[2]/span")).get(0).click();
+		
 
 		// driver.quit();
 	}
