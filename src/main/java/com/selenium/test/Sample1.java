@@ -31,19 +31,19 @@ public class Sample1 {
 		login.typeUsername("jlechardeur@gmail.com");
 		login.typePassword("nellysimon1");
 		login.submitLogin();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		tools.takeScreenShot("C:\\dev\\screenshot_login.png", driver);
 
 		HomepageSearch homepageSearch = new HomepageSearch(driver);
 		homepageSearch.typeDestination("chilly mazarin");
 		homepageSearch.submitSearch();
 		// temporisation
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		tools.takeScreenShot("C:\\dev\\screenshot_liste_hotel.png", driver);
 
 		//on prend le premier element
 		driver.findElements(By.xpath("//*[@class=\"blocHotelWrapper\"]/div/div[2]/div[3]/a[2]/span")).get(0).click();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		//renseigne date
 		SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
@@ -51,13 +51,17 @@ public class Sample1 {
 		c.setTime(dt); 
 		c.add(Calendar.DATE, 3);
 		dt = c.getTime();
-		simpleDate.format(dt);
-		driver.findElement(By.id("search-dateIn")).sendKeys(simpleDate.toString());
+		//driver.findElement(By.id("search-dateIn")).sendKeys(simpleDate.format(dt));
 		c.add(Calendar.DATE, 3);
 		dt = c.getTime();
-		simpleDate.format(dt);
-		driver.findElement(By.id("search-dateOut")).sendKeys(simpleDate.toString());
+		//driver.findElement(By.id("search-dateOut")).sendKeys(simpleDate.format(dt));
+		driver.findElement(By.id("search-dateIn")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[4]/td[5]/a")).click();
 		
+		driver.findElement(By.xpath("//*[@id=\"dates\"]/fieldset/div[4]/a/span")).click();
+		//je prends le premier bouton
+		driver.findElement(By.xpath("//*[@id=\"resultTemplate\"]/div/div/div/div[2]/div[2]/div[2]/a/span")).click();
 
 		// driver.quit();
 	}
